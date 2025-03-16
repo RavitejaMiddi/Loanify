@@ -74,23 +74,23 @@ public class LoanApplicationService implements ILoanApplicationService {
 		return loanAgreementService.getLoanAgreement(loanApplicationId);
 	}
 	
-	//Land officer's verification and approval in any loan application
+	/*//Land officer's verification and approval in any loan application
 	@Override
 	public LoanApplication updateLandStatus(int loanApplicationId) throws LandVerificationException, LoanApplicationNotFoundException{
 		LoanApplication loanApplication = retrieveLoanApplication(loanApplicationId);
-				
-		if(loanApplication.getStatus()== Status.WAITING_FOR_LAND_VERIFICATION_OFFICE_APPROVAL 
-						&& !loanApplication.isLandVerificationApproval() ) 
+
+		if(loanApplication.getStatus()== Status.WAITING_FOR_LAND_VERIFICATION_OFFICE_APPROVAL
+						&& !loanApplication.isLandVerificationApproval() )
 		{
 			loanApplication.setLandVerificationApproval(true);
 			loanApplication.setStatus(Status.WAITING_FOR_FINANCE_APPROVAL);
-			return loanApplicationRepository.save(loanApplication);	
+			return loanApplicationRepository.save(loanApplication);
 		}
-		else  
+		else
 		{
-		 throw new LandVerificationException("Something went wrong") ;	
-		}	
-	}
+		 throw new LandVerificationException("Something went wrong") ;
+		}
+	}*/
 	
 	//Finance officer's verification and approval in any loan application
 	@Override
@@ -98,14 +98,13 @@ public class LoanApplicationService implements ILoanApplicationService {
 		LoanApplication loanApplication = retrieveLoanApplication(loanApplicationId);
 		
 		if (loanApplication.getStatus() == Status.WAITING_FOR_FINANCE_APPROVAL
-				&& loanApplication.isLandVerificationApproval()
 				&& !loanApplication.isFinanceVerificationApproval()) {
 			loanApplication.setFinanceVerificationApproval(true);
 			loanApplication.setStatus(Status.PENDING);
 			return loanApplicationRepository.save(loanApplication);
 
 		} else 
-			throw new FinanceVerificationException("Waiting for Land Verification Approval !!!");
+			throw new FinanceVerificationException("Something went wrong. Please contact your local branch !!!");
 	}
 	
 	//Admin's verification and approval in any loan application and also for add loan agreement
@@ -114,14 +113,13 @@ public class LoanApplicationService implements ILoanApplicationService {
 		LoanApplication loanApplication = retrieveLoanApplication(loanApplicationId);
 		
 		if (loanApplication.getStatus() == Status.PENDING
-				&& loanApplication.isLandVerificationApproval() 
 				&& loanApplication.isFinanceVerificationApproval()) {
 			loanApplication.setAdminApproval(true);
 			loanApplication.setStatus(Status.APPROVED);
 			
 			EMI emi=emiService.addEmiDetails(loanApplication.getLoanAppliedAmount(), 10 , loanApplication.getLoanTenureYears());
 			loanApplication.setLoanApprovedAmount(emi.getLoanAmount());
-			
+			System.out.println(emi);
 			loanAgreementService.addLoanAgreement(loanApplicationId, emi);
 			
 			return loanApplicationRepository.save(loanApplication);

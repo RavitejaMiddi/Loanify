@@ -19,7 +19,7 @@ public interface ILoanApplicationService  {
 	public LoanApplication deleteLoanApplication(int loanApplicationId) throws LoanApplicationNotFoundException;
 	public List<LoanApplication> retrieveAllLoanApplication();
 	public LoanApplication retrieveLoanApplication(int loanApplicationId) throws LoanApplicationNotFoundException;
-	public LoanApplication updateLandStatus(int loanApplicationId) throws LandVerificationException,LoanApplicationNotFoundException;
+//	public LoanApplication updateLandStatus(int loanApplicationId) throws LandVerificationException,LoanApplicationNotFoundException;
 	public LoanApplication updateFinanceStatus(int loanApplicationId) throws FinanceVerificationException, LoanApplicationNotFoundException;
 	public LoanApplication updateAdminStatus(int loanApplicationId) throws AdminApprovalException, LoanApplicationNotFoundException;
 	public LoanAgreement getLoanAgreement(int loanApplicationId)throws LoanAgreementNotFoundException;

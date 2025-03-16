@@ -15,18 +15,25 @@ public class LoanAgreementService implements ILoanAgreementService{
 
 	@Autowired
 	ILoanAgreementRepository loanAgreementRepository;
+
+	@Autowired
+	LoanAgreementService loanAgreementService;
 	
 	// this method add LoanAgreement of specific loan application using LoanApplicationId
 	@Override
 	public LoanAgreement addLoanAgreement(int loanApplicationId, EMI emi) {
 		LoanAgreement loanAgreement = new LoanAgreement(loanApplicationId,emi);
+		System.out.println(loanAgreement);
 		return loanAgreementRepository.save(loanAgreement); 
 	}
 	
 	// get the specific LoanAgreement using loanApplicationId
 	@Override
 	public LoanAgreement getLoanAgreement(int loanApplicationId) throws LoanAgreementNotFoundException {
-		return loanAgreementRepository.findById(loanApplicationId).orElseThrow(() -> new LoanAgreementNotFoundException("Loan Agreement Not Found!"));
+		int loanAgreementId = loanAgreementService.getLoanAgreementId(loanApplicationId);
+		System.out.println("loan agree id : " + loanAgreementId);
+		System.out.println("agreement " + loanAgreementRepository.findById(loanAgreementId));
+		return loanAgreementRepository.findById(loanAgreementId).orElseThrow(() -> new LoanAgreementNotFoundException("Loan Agreement Not Found!"));
 	}
 		
 	// for getting all the LoanAgreements 

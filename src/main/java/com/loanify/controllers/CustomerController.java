@@ -114,7 +114,7 @@ public class CustomerController {
 	@GetMapping("/loanAgreement/{loanApplicationId}")
 	public ResponseEntity<LoanAgreement> getLoanAgreement(@PathVariable int loanApplicationId,HttpServletRequest request) throws LoanAgreementNotFoundException{
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		
+		System.out.println(loanApplicationId);
 		return new ResponseEntity<>(loanapplicationservice.getLoanAgreement(loanApplicationId),HttpStatus.OK);
 	}
 	@GetMapping("/EMICalculator/{principal}/{intrestRate}/{tenure}")
@@ -123,10 +123,12 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/loanAgreementId/{loanApplicationId}")
-	public ResponseEntity<?> getLoanAgreementId(@PathVariable int loanApplicationId) throws LoanAgreementNotFoundException{
-		//user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		return new ResponseEntity <>(loanAgreementservice.getLoanAgreementId(loanApplicationId),HttpStatus.OK);
-		//return new ResponseEntity<>(loanAgreementservice.getLoanAgreement(loanApplicationId),HttpStatus.OK);
+	public ResponseEntity<LoanAgreement> getLoanAgreementId(@PathVariable int loanApplicationId,HttpServletRequest request) throws LoanAgreementNotFoundException{
+		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
+		//return new ResponseEntity <>(loanAgreementservice.getLoanAgreementId(loanApplicationId),HttpStatus.OK);
+		LoanAgreement loanAgreementResponseEntity = loanAgreementservice.getLoanAgreement(loanApplicationId);
+		System.out.println("response from loan agree : " + loanAgreementResponseEntity);
+		return new ResponseEntity<>(loanAgreementservice.getLoanAgreement(loanApplicationId),HttpStatus.OK);
 	}
 	
 	@GetMapping("/loanAgreement/{loanAgreementId}")

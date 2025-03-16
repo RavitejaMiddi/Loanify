@@ -163,6 +163,7 @@ public class AdminController {
 	@PutMapping("/updateAdminVerificationStatus/{loanApplicationId}")
 	public ResponseEntity<LoanApplication> updateAdminStatus(@PathVariable int loanApplicationId,HttpServletRequest request) throws AdminApprovalException, LoanApplicationNotFoundException {
 	user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
+
 		return new ResponseEntity<>(loanApplicationService.updateAdminStatus(loanApplicationId), HttpStatus.OK);
 
 	}

@@ -62,11 +62,11 @@ public class LandVerificationOfficerController {
 		return new ResponseEntity<>(loanApplicationService.retrieveAllLoanApplication(), HttpStatus.OK);
 	}
 	
-	@PutMapping("/updateLandVerificationStatus/{loanApplicationId}")
-	public ResponseEntity<LoanApplication> updateLandStatus(@PathVariable int loanApplicationId,HttpServletRequest request) throws LandVerificationException, LoanApplicationNotFoundException {
-		
-		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		return new ResponseEntity<>(loanApplicationService.updateLandStatus(loanApplicationId), HttpStatus.OK);
-
-	}
+//	@PutMapping("/updateLandVerificationStatus/{loanApplicationId}")
+//	public ResponseEntity<LoanApplication> updateLandStatus(@PathVariable int loanApplicationId,HttpServletRequest request) throws LandVerificationException, LoanApplicationNotFoundException {
+//
+//		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
+//		return new ResponseEntity<>(loanApplicationService.updateLandStatus(loanApplicationId), HttpStatus.OK);
+//
+//	}
 }

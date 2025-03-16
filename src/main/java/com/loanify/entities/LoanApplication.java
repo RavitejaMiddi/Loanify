@@ -29,8 +29,8 @@ public class LoanApplication {
 	private int loanTenureYears;
 	@Column
 	private double loanApprovedAmount;
-	@Column
-	private boolean landVerificationApproval;
+//	@Column
+//	private boolean landVerificationApproval;
 	@Column
 	private boolean financeVerificationApproval;
 	@Column
@@ -53,7 +53,7 @@ public class LoanApplication {
 		this.loanAppliedAmount = loanAppliedAmount;
 		this.loanTenureYears = loanTenureYears;
 		this.loanApprovedAmount = loanApprovedAmount;
-		this.landVerificationApproval = landVerificationApproval;
+	//	this.landVerificationApproval = landVerificationApproval;
 		this.financeVerificationApproval = financeVerificationApproval;
 		this.adminApproval = adminApproval;
 		this.status = status;
@@ -67,10 +67,10 @@ public class LoanApplication {
 		this.loanAppliedAmount = loanAppliedAmount;
 		this.applicationDate=LocalDate.now();
 		this.loanTenureYears=loanTenureYears;
-		this.landVerificationApproval = false;
+		//this.landVerificationApproval = false;
 		this.financeVerificationApproval = false;
 		this.adminApproval=false;
-		this.status = Status.WAITING_FOR_LAND_VERIFICATION_OFFICE_APPROVAL;
+		this.status = Status.WAITING_FOR_FINANCE_APPROVAL;
 	}
 	
 	
@@ -129,13 +129,13 @@ public class LoanApplication {
 		this.loanApprovedAmount = loanApprovedAmount;
 	}
 
-	public boolean isLandVerificationApproval() {
-		return landVerificationApproval;
-	}
-
-	public void setLandVerificationApproval(boolean landVerificationApproval) {
-		this.landVerificationApproval = landVerificationApproval;
-	}
+//	public boolean isLandVerificationApproval() {
+//		return landVerificationApproval;
+//	}
+//
+//	public void setLandVerificationApproval(boolean landVerificationApproval) {
+//		this.landVerificationApproval = landVerificationApproval;
+//	}
 
 	public boolean isFinanceVerificationApproval() {
 		return financeVerificationApproval;
@@ -165,7 +165,7 @@ public class LoanApplication {
 	public String toString() {
 		return "LoanApplication [applicationId=" + applicationId + ", applicationDate=" + applicationDate
 				+ ", customer=" + customer + ", loanAppliedAmount=" + loanAppliedAmount + ", loanApprovedAmount="
-				+ loanApprovedAmount + ", landVerificationApproval=" + landVerificationApproval
+				+ loanApprovedAmount
 				+ ", financeVerificationApproval=" + financeVerificationApproval + ", adminApproval=" + adminApproval
 				+ ", status=" + status + "]";
 	}
