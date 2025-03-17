@@ -23,19 +23,20 @@ public class Customer extends User{
 	@Column
 	private String nationality;
 	@Column
-	private String aadharNumber;
+	private String driversLicence; // dl
 	@Column
-	private String panNumber;
+	private String ssn; //ssn
 
 	public Customer() {
 		super();
 	}
 
+
 	
 
 	public Customer(int userId, String username, String password, String role, String customerName, String mobileNumber,
-			String emailId, LocalDate dateOfBirth, String gender, String nationality, String aadharNumber,
-			String panNumber) {
+			String emailId, LocalDate dateOfBirth, String gender, String nationality, String driversLicence,
+			String ssn) {
 		super(userId, username, password, role);
 		this.customerName = customerName;
 		this.mobileNumber = mobileNumber;
@@ -43,16 +44,16 @@ public class Customer extends User{
 		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
 		this.nationality = nationality;
-		this.aadharNumber = aadharNumber;
-		this.panNumber = panNumber;
+		this.driversLicence = driversLicence;
+		this.ssn = ssn;
 	}
 	
 	
 
 
 	public Customer(String username, String password, String role, String customerName, String mobileNumber,
-			String emailId, LocalDate dateOfBirth, String gender, String nationality, String aadharNumber,
-			String panNumber) {
+			String emailId, LocalDate dateOfBirth, String gender, String nationality, String driversLicence,
+			String ssn) {
 		super(username, password, role);
 		this.customerName = customerName;
 		this.mobileNumber = mobileNumber;
@@ -60,8 +61,8 @@ public class Customer extends User{
 		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
 		this.nationality = nationality;
-		this.aadharNumber = aadharNumber;
-		this.panNumber = panNumber;
+		this.driversLicence = driversLicence;
+		this.ssn = ssn;
 	}
 
 
@@ -114,23 +115,34 @@ public class Customer extends User{
 		this.nationality = nationality;
 	}
 
-	public String getAadharNumber() {
-		return aadharNumber;
+
+	public String getDriversLicence() {
+		return driversLicence;
 	}
 
-	public void setAadharNumber(String aadharNumber) {
-		this.aadharNumber = aadharNumber;
+	public void setDriversLicence(String driversLicence) {
+		this.driversLicence = driversLicence;
 	}
 
-	public String getPanNumber() {
-		return panNumber;
+	public String getSsn() {
+		return ssn;
 	}
 
-	public void setPanNumber(String panNumber) {
-		this.panNumber = panNumber;
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
 	}
 
-
-
-	
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"customerName='" + customerName + '\'' +
+				", mobileNumber='" + mobileNumber + '\'' +
+				", emailId='" + emailId + '\'' +
+				", dateOfBirth=" + dateOfBirth +
+				", gender='" + gender + '\'' +
+				", nationality='" + nationality + '\'' +
+				", driversLicence='" + driversLicence + '\'' +
+				", ssn='" + ssn + '\'' +
+				'}';
+	}
 }

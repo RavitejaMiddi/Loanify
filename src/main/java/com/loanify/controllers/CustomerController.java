@@ -72,7 +72,7 @@ public class CustomerController {
 	@PostMapping("/addCustomer")
 	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
 		//user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		
+		System.out.println(customer.toString());
 		return new ResponseEntity<>(customerService.addCustomer(customer),HttpStatus.OK);
 	}
 	
