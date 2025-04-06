@@ -147,7 +147,12 @@ public class AdminController {
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
 		return new ResponseEntity<>(customerService.getAllCustomers(),HttpStatus.OK);
 	}
-	
+
+	/*
+	 Endpoint to retrieve and return all loan applications.
+ 	 Validates the JWT token from the request to authenticate the user.
+	 Returns a list of all loan applications with HTTP status 200 (OK).
+	 */
 	@GetMapping("/LoanApplications")
 	public ResponseEntity<List<LoanApplication>> getAllLoanApplications(HttpServletRequest request) {
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);

@@ -29,20 +29,20 @@ class AdminServiceTest {
 		admin2 = new Admin();
 		
 		admin.setUserId(1);
-		admin.setAdminName("asddf");
-		admin.setAdminContact("554");
-		admin.setPassword("Saishf@");
-		admin.setUsername("om");
+		admin.setAdminName("ashraf");
+		admin.setAdminContact("5547556");
+		admin.setPassword("ashu");
+		admin.setUsername("ashraf");
 		
-		admin1.setAdminName("asd");
-		admin1.setAdminContact("s7");
-		admin1.setPassword("jshs@1");
-		admin1.setUsername("bcx");
+		admin1.setAdminName("raj");
+		admin1.setAdminContact("23456789");
+		admin1.setPassword("raj@1");
+		admin1.setUsername("raj");
 		
-		admin2.setAdminName("qwe");
-		admin2.setAdminContact("tyu");
+		admin2.setAdminName("naveen");
+		admin2.setAdminContact("345678987");
 		admin2.setPassword("uio@1");
-		admin2.setUsername("mjk");
+		admin2.setUsername("naveen");
 	}
 
 	@Autowired
