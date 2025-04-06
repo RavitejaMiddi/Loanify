@@ -88,37 +88,28 @@ public class AdminController {
 		return new ResponseEntity<>(adminService.addAdmin(admin), HttpStatus.OK);
 	}
 	
-
+	// End-point to add finance officer.
 	@PostMapping("/addFinanceOfficer")
 	public ResponseEntity<FinanceVerificationOfficer> addFinanceOfficer(@RequestBody FinanceVerificationOfficer officer,HttpServletRequest request) {
 	    user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
 		return new ResponseEntity<>(financeVerificationService.addFinanceOfficer(officer), HttpStatus.OK);
 	}
-	
-	@PostMapping("/addLandOfficer")
-	public ResponseEntity<LandVerificationOfficer> addLandOfficer(@RequestBody LandVerificationOfficer officer,HttpServletRequest request) {
-		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		return new ResponseEntity<>(landVerificationService.addLandOfficer(officer),HttpStatus.OK);
-	}	
-	
+
+	//End-point view admin
 	@GetMapping("/{userId}")
 	public ResponseEntity<Admin> viewAdmin(@PathVariable("userId") int userId,HttpServletRequest request) {
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
 		return new ResponseEntity<>(adminService.getAdmin(userId), HttpStatus.OK);
 	}
 	
-	@GetMapping("landOfficer/{userId}")
-	public ResponseEntity<LandVerificationOfficer> viewLandOfficer(@PathVariable("userId") int userId,HttpServletRequest request) {
-		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		return new ResponseEntity<>(landVerificationService.getLandOfficer(userId), HttpStatus.OK);
-	}
-	
+
+	//End-point to view finance officer
 	@GetMapping("financeOfficer/{userId}")
 	public ResponseEntity<FinanceVerificationOfficer> viewFinanceOfficer(@PathVariable("userId") int userId,HttpServletRequest request) {
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
 		return new ResponseEntity<>(financeVerificationService.getFinanceOfficer(userId), HttpStatus.OK);
 	}
-	
+	//This end-point retrieves all admins
 	@GetMapping("/Admins")
 	public ResponseEntity<List<Admin>> viewAllAdmin(HttpServletRequest request) {
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
@@ -126,22 +117,15 @@ public class AdminController {
 		
 	}
 	
-	
+	// This method retrieves all finance officers.
 	@GetMapping("/FinanceOfficers")
 	public ResponseEntity<List<FinanceVerificationOfficer>> viewAllFinanceOfficer(HttpServletRequest request) {
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
 		return new ResponseEntity<>(financeVerificationService.getAllFinanceOfficers(), HttpStatus.OK);
 		
 	}
-	
-	
-	@GetMapping("/LandOfficers")
-	public ResponseEntity<List<LandVerificationOfficer>> viewAllLandOfficer(HttpServletRequest request) {
-		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		return new ResponseEntity<>(landVerificationService.getAllLandOfficers(), HttpStatus.OK);
-		
-	}
 
+	//It gives list of all customers registered.
 	@GetMapping("/customers")
 	public ResponseEntity<List<Customer>> viewAllCustomers(HttpServletRequest request){
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
