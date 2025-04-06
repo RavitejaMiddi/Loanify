@@ -103,11 +103,15 @@ public class CustomerController {
 		
 		return new ResponseEntity<>(loanapplicationservice.addLoanApplication(userId,loanAppliedAmount,loanTenureYears), HttpStatus.OK);
 	}
-	
+	/*
+	 Endpoint to track the status of a specific loan application by its ID.
+	 Validates the JWT token from the request to authenticate the user.
+	 Retrieves the loan application's status and returns it with HTTP status 200 (OK).
+	 Throws LoanApplicationNotFoundException if the application ID is invalid or not found.
+	*/
 	@GetMapping("/loanTracker/{loanApplicationId}")
 	public ResponseEntity<Status> loanTracker(@PathVariable int loanApplicationId,HttpServletRequest request) throws LoanApplicationNotFoundException{
 		user=jwtTokenUtil.validateTokenAndGetUserDetails(request);
-		
 		return new ResponseEntity<>(loanapplicationservice.retrieveLoanApplication(loanApplicationId).getStatus(),HttpStatus.OK);
 	}
 	

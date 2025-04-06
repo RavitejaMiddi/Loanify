@@ -55,7 +55,7 @@ public class LoanApplicationService implements ILoanApplicationService {
 		return loanApplication;
 	}
 	
-	//Get any loan application by its id
+	//Get any loan application by its id if it's not found it will return Loan Application not found error.
 	@Override
 	public LoanApplication retrieveLoanApplication(int loanApplicationId) throws LoanApplicationNotFoundException {
 		return loanApplicationRepository.findById(loanApplicationId)
